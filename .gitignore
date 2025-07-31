@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Distribution files
+dist/
+
+# Lock file
+package-lock.json
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+*.stackdump
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vscode/

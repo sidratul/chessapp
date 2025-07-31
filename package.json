@@ -1,0 +1,33 @@
+{
+  "name": "chess-cli",
+  "version": "1.0.0",
+  "description": "A simple CLI chess game.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "prestart": "tsc",
+    "start": "node dist/index.js",
+    "pretest": "tsc",
+    "test": "jest --config jest.config.cjs"
+  },
+  "keywords": [
+    "chess",
+    "cli",
+    "game"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.1.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
