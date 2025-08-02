@@ -1,12 +1,13 @@
 import { Piece } from './piece';
 import { PlayerColor, PieceType } from '../types';
+import { Board } from '../board';
 
 export class Rook extends Piece {
   constructor(color: PlayerColor) {
     super(color, PieceType.ROOK);
   }
 
-  isValidMove(startRow: number, startCol: number, endRow: number, endCol: number, board: import("../board").Board): boolean {
+  isValidMove(startRow: number, startCol: number, endRow: number, endCol: number, board: Board): boolean {
     if (startRow === endRow) { // Horizontal move
       const step = startCol < endCol ? 1 : -1;
       for (let col = startCol + step; col !== endCol; col += step) {

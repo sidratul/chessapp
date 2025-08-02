@@ -1,12 +1,13 @@
 import { Piece } from './piece';
 import { PlayerColor, PieceType } from '../types';
+import { Board } from '../board';
 
 export class Bishop extends Piece {
   constructor(color: PlayerColor) {
     super(color, PieceType.BISHOP);
   }
 
-  isValidMove(startRow: number, startCol: number, endRow: number, endCol: number, board: import("../board").Board): boolean {
+  isValidMove(startRow: number, startCol: number, endRow: number, endCol: number, board: Board): boolean {
     if (Math.abs(startRow - endRow) !== Math.abs(startCol - endCol)) {
       return false; // Not a diagonal move
     }
