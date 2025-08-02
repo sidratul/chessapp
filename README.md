@@ -6,12 +6,21 @@ This is a simple command-line interface (CLI) chess game built with Node.js and 
 
 - Standard 8x8 chessboard setup.
 - Basic piece movement (Pawn, Rook, Knight, Bishop, Queen, King).
-- Input handling for moves using algebraic notation (e.g., `a2 a3`) or row,column notation (e.g., `6,0 5,0`).
+- Input handling for moves using algebraic notation (e.g., `a2,a3`).
 - Input validation.
 - Game ends when a King is captured.
 - Colored pieces for better readability (white pieces are white, black pieces are black).
-- Animated input prompt using `chalk-animation`.
 - Colored board boundaries, letters, and numbers using `chalk`.
+
+## Pre-installation
+
+Before you begin, ensure you have Node.js installed on your system. Node.js is a JavaScript runtime that allows you to run JavaScript code outside of a web browser.
+
+**Recommended Node.js Version:**
+It is highly recommended to use the latest Long Term Support (LTS) version of Node.js. You can download it from the official Node.js website: [https://nodejs.org/](https://nodejs.org/)
+
+**How to Install Node.js:**
+Follow the instructions on the Node.js website for your operating system. For most systems, you can download an installer or use a package manager.
 
 ## Setup
 
