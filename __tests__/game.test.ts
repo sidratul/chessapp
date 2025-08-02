@@ -1,5 +1,5 @@
-import ChessGame from '../game';
-import { Board, Piece, Pawn, Rook, Knight, Bishop, Queen, King } from '../board';
+import ChessGame from '../src/game';
+import { Board, Piece, Pawn, Rook, Knight, Bishop, Queen, King } from '../src/board';
 
 describe('ChessGame', () => {
   let game: ChessGame;
@@ -141,64 +141,64 @@ describe('Piece Moves', () => {
   test('Pawn should move one step forward', () => {
     clearBoardExcept(6, 0);
     board.board[6][0] = new Pawn('white');
-    expect(board.getPiece(6, 0)?.isValidMove(6, 0, 5, 0, board.board)).toBe(true);
+    expect(board.getPiece(6, 0)?.isValidMove(6, 0, 5, 0, board)).toBe(true);
   });
 
   test('Pawn should move two steps forward from start', () => {
     clearBoardExcept(6, 0);
     board.board[6][0] = new Pawn('white');
-    expect(board.getPiece(6, 0)?.isValidMove(6, 0, 4, 0, board.board)).toBe(true);
+    expect(board.getPiece(6, 0)?.isValidMove(6, 0, 4, 0, board)).toBe(true);
   });
 
   test('Pawn should capture diagonally', () => {
     clearBoardExcept(6, 0);
     board.board[6][0] = new Pawn('white');
     board.board[5][1] = new Pawn('black');
-    expect(board.getPiece(6, 0)?.isValidMove(6, 0, 5, 1, board.board)).toBe(true);
+    expect(board.getPiece(6, 0)?.isValidMove(6, 0, 5, 1, board)).toBe(true);
   });
 
   test('Rook should move horizontally', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Rook('white');
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 0, board.board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 7, board.board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 0, board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 7, board)).toBe(true);
   });
 
   test('Rook should move vertically', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Rook('white');
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 4, board.board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 7, 4, board.board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 4, board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 7, 4, board)).toBe(true);
   });
 
   test('Knight should move in L-shape', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Knight('white');
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 2, 3, board.board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 3, 2, board.board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 6, 5, board.board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 2, 3, board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 3, 2, board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 6, 5, board)).toBe(true);
   });
 
   test('Bishop should move diagonally', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Bishop('white');
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 0, board.board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 7, 7, board.board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 0, board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 7, 7, board)).toBe(true);
   });
 
   test('Queen should move straight or diagonally', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Queen('white');
     // Straight
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 0, board.board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 0, board)).toBe(true);
     // Diagonal
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 0, board.board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 0, board)).toBe(true);
   });
 
   test('King should move one step in any direction', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new King('white');
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 3, 4, board.board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 5, 5, board.board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 3, 4, board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 5, 5, board)).toBe(true);
   });
 });
