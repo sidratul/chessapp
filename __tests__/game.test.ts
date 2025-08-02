@@ -1,5 +1,6 @@
 import ChessGame from '../src/game';
 import { Board, Piece, Pawn, Rook, Knight, Bishop, Queen, King } from '../src/board';
+import { PlayerColor, PieceType } from '../src/types';
 
 describe('ChessGame', () => {
   let game: ChessGame;
@@ -10,13 +11,13 @@ describe('ChessGame', () => {
 
   test('should initialize with a new board and white as current player', () => {
     expect(game.board).toBeInstanceOf(Board);
-    expect(game.currentPlayer).toBe('white');
+    expect(game.currentPlayer).toBe(PlayerColor.WHITE);
   });
 
   test('should switch player after a valid move', () => {
     // Move white pawn from a2 to a3
     game.makeMove(6, 0, 5, 0);
-    expect(game.currentPlayer).toBe('black');
+    expect(game.currentPlayer).toBe(PlayerColor.BLACK);
   });
 
   test('should not allow moving a piece of the wrong color', () => {
@@ -36,12 +37,12 @@ describe('ChessGame', () => {
     game.board.board[3][4] = null; // Clear square
 
     // Place a white queen at 3,4
-    game.board.board[3][4] = new Queen('white');
+    game.board.board[3][4] = new Queen(PlayerColor.WHITE);
 
     // Move white queen to capture black king
     game.makeMove(3, 4, 0, 4);
     expect(game.isGameOver()).toBe(true);
-    expect(game.winner).toBe('white');
+    expect(game.winner).toBe(PlayerColor.WHITE);
   });
 });
 
@@ -54,12 +55,12 @@ describe('Board', () => {
 
   test('should initialize with all pieces in correct positions', () => {
     // Test a few specific pieces
-    expect(board.getPiece(0, 0)?.type).toBe('Rook');
-    expect(board.getPiece(0, 0)?.color).toBe('black');
-    expect(board.getPiece(1, 0)?.type).toBe('Pawn');
-    expect(board.getPiece(1, 0)?.color).toBe('black');
-    expect(board.getPiece(7, 4)?.type).toBe('King');
-    expect(board.getPiece(7, 4)?.color).toBe('white');
+    expect(board.getPiece(0, 0)?.type).toBe(PieceType.ROOK);
+    expect(board.getPiece(0, 0)?.color).toBe(PlayerColor.BLACK);
+    expect(board.getPiece(1, 0)?.type).toBe(PieceType.PAWN);
+    expect(board.getPiece(1, 0)?.color).toBe(PlayerColor.BLACK);
+    expect(board.getPiece(7, 4)?.type).toBe(PieceType.KING);
+    expect(board.getPiece(7, 4)?.color).toBe(PlayerColor.WHITE);
   });
 
   test('should move a piece from start to end position', () => {
@@ -140,40 +141,40 @@ describe('Piece Moves', () => {
 
   test('Pawn should move one step forward', () => {
     clearBoardExcept(6, 0);
-    board.board[6][0] = new Pawn('white');
+    board.board[6][0] = new Pawn(PlayerColor.WHITE);
     expect(board.getPiece(6, 0)?.isValidMove(6, 0, 5, 0, board)).toBe(true);
   });
 
   test('Pawn should move two steps forward from start', () => {
     clearBoardExcept(6, 0);
-    board.board[6][0] = new Pawn('white');
+    board.board[6][0] = new Pawn(PlayerColor.WHITE);
     expect(board.getPiece(6, 0)?.isValidMove(6, 0, 4, 0, board)).toBe(true);
   });
 
   test('Pawn should capture diagonally', () => {
     clearBoardExcept(6, 0);
-    board.board[6][0] = new Pawn('white');
-    board.board[5][1] = new Pawn('black');
+    board.board[6][0] = new Pawn(PlayerColor.WHITE);
+    board.board[5][1] = new Pawn(PlayerColor.BLACK);
     expect(board.getPiece(6, 0)?.isValidMove(6, 0, 5, 1, board)).toBe(true);
   });
 
   test('Rook should move horizontally', () => {
     clearBoardExcept(4, 4);
-    board.board[4][4] = new Rook('white');
+    board.board[4][4] = new Rook(PlayerColor.WHITE);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 0, board)).toBe(true);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 7, board)).toBe(true);
   });
 
   test('Rook should move vertically', () => {
     clearBoardExcept(4, 4);
-    board.board[4][4] = new Rook('white');
+    board.board[4][4] = new Rook(PlayerColor.WHITE);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 4, board)).toBe(true);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 7, 4, board)).toBe(true);
   });
 
   test('Knight should move in L-shape', () => {
     clearBoardExcept(4, 4);
-    board.board[4][4] = new Knight('white');
+    board.board[4][4] = new Knight(PlayerColor.WHITE);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 2, 3, board)).toBe(true);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 3, 2, board)).toBe(true);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 6, 5, board)).toBe(true);
@@ -181,14 +182,14 @@ describe('Piece Moves', () => {
 
   test('Bishop should move diagonally', () => {
     clearBoardExcept(4, 4);
-    board.board[4][4] = new Bishop('white');
+    board.board[4][4] = new Bishop(PlayerColor.WHITE);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 0, board)).toBe(true);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 7, 7, board)).toBe(true);
   });
 
   test('Queen should move straight or diagonally', () => {
     clearBoardExcept(4, 4);
-    board.board[4][4] = new Queen('white');
+    board.board[4][4] = new Queen(PlayerColor.WHITE);
     // Straight
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 0, board)).toBe(true);
     // Diagonal
@@ -197,7 +198,7 @@ describe('Piece Moves', () => {
 
   test('King should move one step in any direction', () => {
     clearBoardExcept(4, 4);
-    board.board[4][4] = new King('white');
+    board.board[4][4] = new King(PlayerColor.WHITE);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 3, 4, board)).toBe(true);
     expect(board.getPiece(4, 4)?.isValidMove(4, 4, 5, 5, board)).toBe(true);
   });
