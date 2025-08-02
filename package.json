@@ -2,11 +2,9 @@
   "name": "chess-cli",
   "version": "1.0.0",
   "description": "A simple CLI chess game.",
-  "main": "dist/index.js",
-  "type": "module",
+  "main": "dist/src/index.js",
   "scripts": {
-    "prestart": "tsc",
-    "start": "node dist/index.js",
+    "start": "npx tsc && node dist/src/index.js",
     "pretest": "tsc",
     "test": "jest --config jest.config.cjs"
   },
