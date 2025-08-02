@@ -74,11 +74,9 @@ export class Board {
   }
 
   toString(): string {
-    let boardString = '  ';
-    for (let i = 0; i < 8; i++) {
-      boardString += String.fromCharCode(97 + i) + ' '; // a to h
-    }
-    boardString += '\n';
+    let boardString = '';
+    const columnLabels = 'a b c d e f g h ';
+    boardString += '  ' + columnLabels + '\n';
     boardString += ' +-----------------+\n';
     for (let i = 0; i < 8; i++) {
       boardString += `${8 - i}|`;
@@ -89,10 +87,7 @@ export class Board {
       boardString += `|${8 - i}\n`;
     }
     boardString += ' +-----------------+\n';
-    boardString += '  ';
-    for (let i = 0; i < 8; i++) {
-      boardString += String.fromCharCode(97 + i) + ' ';
-    }
+    boardString += '  ' + columnLabels;
     return boardString;
   }
 
