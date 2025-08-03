@@ -1,13 +1,12 @@
 import { Piece } from './piece';
-import { PlayerColor, PieceType } from '../types';
-import { Board } from '../board';
+import { PlayerColor, PieceType, Move } from '../types';
 
 export class Pawn extends Piece {
   constructor(color: PlayerColor) {
     super(color, PieceType.PAWN);
   }
 
-  isValidMove(startRow: number, startCol: number, endRow: number, endCol: number, board: Board): boolean {
+  isValidMove({ startRow, startCol, endRow, endCol, board }: Move): boolean {
     const direction = this.color === PlayerColor.WHITE ? -1 : 1;
     const startRank = this.color === PlayerColor.WHITE ? 6 : 1;
 

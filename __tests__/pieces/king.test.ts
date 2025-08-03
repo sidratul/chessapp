@@ -22,7 +22,7 @@ describe('King Moves', () => {
   test('King should move one step in any direction', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new King(PlayerColor.WHITE);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 3, 4, board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 5, 5, board)).toBe(true);
+        expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 3, endCol: 4, board })).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 5, endCol: 5, board })).toBe(true);
   });
 });

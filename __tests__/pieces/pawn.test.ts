@@ -22,19 +22,19 @@ describe('Pawn Moves', () => {
   test('Pawn should move one step forward', () => {
     clearBoardExcept(6, 0);
     board.board[6][0] = new Pawn(PlayerColor.WHITE);
-    expect(board.getPiece(6, 0)?.isValidMove(6, 0, 5, 0, board)).toBe(true);
+        expect(board.getPiece(6, 0)?.isValidMove({ startRow: 6, startCol: 0, endRow: 5, endCol: 0, board })).toBe(true);
   });
 
   test('Pawn should move two steps forward from start', () => {
     clearBoardExcept(6, 0);
     board.board[6][0] = new Pawn(PlayerColor.WHITE);
-    expect(board.getPiece(6, 0)?.isValidMove(6, 0, 4, 0, board)).toBe(true);
+        expect(board.getPiece(6, 0)?.isValidMove({ startRow: 6, startCol: 0, endRow: 4, endCol: 0, board })).toBe(true);
   });
 
   test('Pawn should capture diagonally', () => {
     clearBoardExcept(6, 0);
     board.board[6][0] = new Pawn(PlayerColor.WHITE);
     board.board[5][1] = new Pawn(PlayerColor.BLACK);
-    expect(board.getPiece(6, 0)?.isValidMove(6, 0, 5, 1, board)).toBe(true);
+        expect(board.getPiece(6, 0)?.isValidMove({ startRow: 6, startCol: 0, endRow: 5, endCol: 1, board })).toBe(true);
   });
 });

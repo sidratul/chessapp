@@ -23,8 +23,8 @@ describe('Queen Moves', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Queen(PlayerColor.WHITE);
     // Straight
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 0, board)).toBe(true);
+        expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 4, endCol: 0, board })).toBe(true);
     // Diagonal
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 0, board)).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 0, endCol: 0, board })).toBe(true);
   });
 });

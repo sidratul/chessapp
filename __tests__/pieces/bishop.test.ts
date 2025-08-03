@@ -22,7 +22,7 @@ describe('Bishop Moves', () => {
   test('Bishop should move diagonally', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Bishop(PlayerColor.WHITE);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 0, board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 7, 7, board)).toBe(true);
+        expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 0, endCol: 0, board })).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 7, endCol: 7, board })).toBe(true);
   });
 });

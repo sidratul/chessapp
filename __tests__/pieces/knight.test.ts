@@ -22,8 +22,8 @@ describe('Knight Moves', () => {
   test('Knight should move in L-shape', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Knight(PlayerColor.WHITE);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 2, 3, board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 3, 2, board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 6, 5, board)).toBe(true);
+        expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 2, endCol: 3, board })).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 3, endCol: 2, board })).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 6, endCol: 5, board })).toBe(true);
   });
 });

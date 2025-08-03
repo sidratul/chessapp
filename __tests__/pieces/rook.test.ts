@@ -22,14 +22,14 @@ describe('Rook Moves', () => {
   test('Rook should move horizontally', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Rook(PlayerColor.WHITE);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 0, board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 4, 7, board)).toBe(true);
+        expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 4, endCol: 0, board })).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 4, endCol: 7, board })).toBe(true);
   });
 
   test('Rook should move vertically', () => {
     clearBoardExcept(4, 4);
     board.board[4][4] = new Rook(PlayerColor.WHITE);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 0, 4, board)).toBe(true);
-    expect(board.getPiece(4, 4)?.isValidMove(4, 4, 7, 4, board)).toBe(true);
+        expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 0, endCol: 4, board })).toBe(true);
+    expect(board.getPiece(4, 4)?.isValidMove({ startRow: 4, startCol: 4, endRow: 7, endCol: 4, board })).toBe(true);
   });
 });

@@ -1,6 +1,6 @@
 import { Board } from './board';
 import { Piece } from './pieces/piece';
-import { PlayerColor, PieceType } from './types';
+import { PlayerColor, PieceType, Move } from './types';
 
 export default class ChessGame {
   board: Board;
@@ -24,7 +24,7 @@ export default class ChessGame {
       throw new Error(`It's ${this.currentPlayer}'s turn.`);
     }
 
-    if (!piece.isValidMove(startRow, startCol, endRow, endCol, this.board)) {
+        if (!piece.isValidMove({ startRow, startCol, endRow, endCol, board: this.board })) {
       throw new Error('Invalid move for this piece.');
     }
 
@@ -71,7 +71,7 @@ export default class ChessGame {
           const originalKingPiece = this.board.board[kingRow][kingCol];
           this.board.board[kingRow][kingCol] = null; 
 
-          const canAttackKing = piece.isValidMove(r, c, kingRow, kingCol, this.board);
+                    const canAttackKing = piece.isValidMove({ startRow: r, startCol: c, endRow: kingRow, endCol: kingCol, board: this.board });
 
           // Restore the king piece
           this.board.board[kingRow][kingCol] = originalKingPiece;

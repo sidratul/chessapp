@@ -1,8 +1,5 @@
-
 import 'colors';
-import { Board } from '../board';
-
-import { PlayerColor, PieceType } from '../types';
+import { PlayerColor, PieceType, Move } from '../types';
 
 export abstract class Piece {
   color: PlayerColor;
@@ -28,5 +25,5 @@ export abstract class Piece {
     return rawSymbol || '';
   }
 
-  abstract isValidMove(startRow: number, startCol: number, endRow: number, endCol: number, board: Board): boolean;
+    abstract isValidMove(move: Move): boolean;
 }

@@ -1,13 +1,12 @@
 import { Piece } from './piece';
-import { PlayerColor, PieceType } from '../types';
-import { Board } from '../board';
+import { PlayerColor, PieceType, Move } from '../types';
 
 export class Knight extends Piece {
   constructor(color: PlayerColor) {
     super(color, PieceType.KNIGHT);
   }
 
-  isValidMove(startRow: number, startCol: number, endRow: number, endCol: number, board: Board): boolean {
+  isValidMove({ startRow, startCol, endRow, endCol, board }: Move): boolean {
     const rowDiff = Math.abs(startRow - endRow);
     const colDiff = Math.abs(startCol - endCol);
 
