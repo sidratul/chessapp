@@ -21,3 +21,10 @@ export interface Move {
   endCol: number;
   board: Board;
 }
+
+export interface MoveCommand {
+  startRow: number;
+  startCol: number;
+  endRow: number;
+  endCol: number;
+}

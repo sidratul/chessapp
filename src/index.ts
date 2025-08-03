@@ -25,7 +25,7 @@ function getPlayerMove(): void {
       const startCoords = game.board.parseCoordinate(start.trim());
       const endCoords = game.board.parseCoordinate(end.trim());
 
-      game.makeMove(startCoords.row, startCoords.col, endCoords.row, endCoords.col);
+            game.makeMove({ startRow: startCoords.row, startCol: startCoords.col, endRow: endCoords.row, endCol: endCoords.col });
       displayBoard();
 
       if (game.isGameOver()) {

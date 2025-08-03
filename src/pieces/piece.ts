@@ -1,4 +1,4 @@
-import 'colors';
+
 import { PlayerColor, PieceType, Move } from '../types';
 
 export abstract class Piece {

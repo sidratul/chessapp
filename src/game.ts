@@ -1,6 +1,6 @@
 import { Board } from './board';
-import { Piece } from './pieces/piece';
-import { PlayerColor, PieceType, Move } from './types';
+
+import { PlayerColor, PieceType, MoveCommand } from './types';
 
 export default class ChessGame {
   board: Board;
@@ -13,7 +13,7 @@ export default class ChessGame {
     this.winner = null;
   }
 
-  makeMove(startRow: number, startCol: number, endRow: number, endCol: number): void {
+    makeMove({ startRow, startCol, endRow, endCol }: MoveCommand): void {
     const piece = this.board.getPiece(startRow, startCol);
 
     if (!piece) {
