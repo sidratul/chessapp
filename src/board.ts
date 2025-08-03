@@ -82,7 +82,7 @@ export class Board {
       boardString += `${8 - i}|`;
       for (let j = 0; j < 8; j++) {
         const piece = this.board[i][j];
-        boardString += (piece ? (piece.color === PlayerColor.WHITE ? piece.symbol : piece.symbol) : ' ') + ' ';
+        boardString += (piece ? piece.symbol  : ' ') + ' ';
       }
       boardString += `|${8 - i}\n`;
     }
@@ -95,26 +95,14 @@ export class Board {
     let col: number, row: number;
 
     if (coord.length === 2) {
-      // Handle "a1" format
       if (/[a-h]/.test(coord[0])) {
         col = coord[0].charCodeAt(0) - 'a'.charCodeAt(0);
         row = 8 - parseInt(coord[1], 10);
       } else {
-        throw new Error('Invalid coordinate format. Expected e.g., "a1" or "1,3".');
-      }
-    } else if (coord.includes(',')) {
-      // Handle "1,3" format
-      const parts = coord.split(',');
-      if (parts.length !== 2) {
-        throw new Error('Invalid coordinate format. Expected e.g., "a1" or "1,3".');
-      }
-      row = parseInt(parts[0], 10);
-      col = parseInt(parts[1], 10);
-      if (isNaN(row) || isNaN(col)) {
-        throw new Error('Invalid coordinate format. Expected e.g., "a1" or "1,3".');
+        throw new Error('Invalid coordinate format. Expected e.g., "a1".');
       }
     } else {
-      throw new Error('Invalid coordinate format. Expected e.g., "a1" or "1,3".');
+      throw new Error('Invalid coordinate format. Expected e.g., "a1".');
     }
 
     if (isNaN(row) || isNaN(col) || row < 0 || row >= 8 || col < 0 || col >= 8) {

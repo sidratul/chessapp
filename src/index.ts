@@ -2,7 +2,6 @@ import ChessGame from './game';
 import readline from 'readline';
 import { PlayerColor } from './types';
 
-
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -30,7 +29,7 @@ function getPlayerMove(): void {
       displayBoard();
 
       if (game.isGameOver()) {
-        console.log(`Game Over! Player ${game.currentPlayer === PlayerColor.WHITE ? PlayerColor.BLACK : PlayerColor.WHITE} wins!`);
+        console.log(`Game Over! Player ${game.winner} wins!`);
         rl.close();
       } else {
         if (game.isKingInCheck(game.currentPlayer)) {
