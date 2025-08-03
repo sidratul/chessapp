@@ -24,9 +24,12 @@ Follow the instructions on the Node.js website for your operating system. For mo
 
 ## Setup
 
-1.  **Clone the repository (or create the files manually):**
+1.  **Clone the repository:**
 
-    If you have the files, navigate to the project directory.
+    ```bash
+    git clone https://github.com/sidratul/chessapp
+    cd chessapp
+    ```
 
 2.  **Install dependencies:**
 
